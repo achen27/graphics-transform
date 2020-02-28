@@ -14,7 +14,7 @@ The file follows the following format:
          scale: create a scale matrix,
                 then multiply the transform matrix by the scale matrix -
                 takes 3 arguments (sx, sy, sz)
-         translate: create a translation matrix,
+         move: create a translation matrix,
                     then multiply the transform matrix by the translation matrix -
                     takes 3 arguments (tx, ty, tz)
          rotate: create a rotation matrix,
@@ -54,7 +54,7 @@ def parse_file( fname, points, transform, screen, color ):
             matrix_mult(m, transform)
             i += 1
 
-        elif fList[i] == "translate":
+        elif fList[i] == "move":
             n = fList[i+1].split(" ")
             m = make_translate(int(n[0]),int(n[1]),int(n[2]))
             matrix_mult(m, transform)
@@ -62,17 +62,30 @@ def parse_file( fname, points, transform, screen, color ):
 
         elif fList[i] == "rotate":
             n = fList[i+1].split(" ")
+            m = []
             if n[0] == "x":
+                print("xrotate "+n[1])
                 m = make_rotX(int(n[1]))
+                print_matrix(m)
             elif n[0] == "y":
+                print("yrotate "+n[1])
                 m = make_rotY(int(n[1]))
+                print_matrix(m)
             elif n[0] == "z":
+                print("zrotate "+n[1])
                 m = make_rotZ(int(n[1]))
+                print_matrix(m)
+            print("before")
+            print_matrix(transform)
             matrix_mult(m, transform)
+            print("after")
+            print_matrix(transform)
             i += 1
 
         elif fList[i] == "apply":
+            print("points")
             matrix_mult(transform,points)
+            print_matrix(points)
 
         elif fList[i] == "display":
             clear_screen(screen)
