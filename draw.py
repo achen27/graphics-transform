@@ -9,10 +9,10 @@ def draw_lines( matrix, screen, color ):
 
     point = 0
     while point < len(matrix) - 1:
-        draw_line( matrix[point][0],
-                   matrix[point][1],
-                   matrix[point+1][0],
-                   matrix[point+1][1],
+        draw_line( int(matrix[point][0]),
+                   int(matrix[point][1]),
+                   int(matrix[point+1][0]),
+                   int(matrix[point+1][1]),
                    screen, color)
         point+= 2
 
@@ -27,14 +27,6 @@ def add_point( matrix, x, y, z=0 ):
 
 
 def draw_line( x0, y0, x1, y1, screen, color ):
-    x0 = int(x0)
-    # print(x0)
-    y0 = int(y0)
-    # print(y0)
-    x1 = int(x1)
-    # print(x1)
-    y1 = int(y1)
-    # print(y1)
 
     #swap points if going right -> left
     if x0 > x1:

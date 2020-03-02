@@ -32,6 +32,7 @@ ident
 move
 100 100 0
 apply
+display
 ident
 rotate
 z 20
@@ -39,7 +40,6 @@ rotate
 x 20
 rotate
 y 20
-display
 apply
 display
 ident
